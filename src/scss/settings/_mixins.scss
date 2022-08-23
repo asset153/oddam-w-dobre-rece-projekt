@@ -1,0 +1,19 @@
+@mixin container() {
+  max-width: 1900px;
+  min-height: 100vh;
+  margin: 0 auto;
+
+  @content;
+}
+
+@mixin tablet() {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}

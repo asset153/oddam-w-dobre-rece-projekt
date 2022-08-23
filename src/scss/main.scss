@@ -2,6 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;700&display=swap");
 @import "./settings/fonts";
 @import "./settings/colors";
+@import "./settings/mixins";
+@import "./settings/placeholders";
+@import "../components/Home/HomeStyle";
+@import "../components/HomeHeader/HomeHeader";
 
 body {
   font-family: $font-base;
