@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-scroll";
+import HomeNav from "../HomeNav/HomeNav";
 
 function HomeHeader() {
   const navigate = useNavigate();
@@ -14,24 +15,7 @@ function HomeHeader() {
       <div className="header__img"></div>
 
       <div className="header__content">
-        <div className="header__content__loginRegister">
-          <button onClick={() => handleClickNavigate("/logowanie")}>
-            Zaloguj
-          </button>
-          <button onClick={() => handleClickNavigate("/rejestracja")}>
-            Załóż konto
-          </button>
-        </div>
-
-        <nav className="header__content__navigation">
-          <ul>
-            <li>Start</li>
-            <li>O co chodzi?</li>
-            <li>O nas</li>
-            <li>Fundacje i organizacje</li>
-            <li>Kontakt</li>
-          </ul>
-        </nav>
+        <HomeNav />
 
         <div className="header__content__titleAndBtns">
           <h1>

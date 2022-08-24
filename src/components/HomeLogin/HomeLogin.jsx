@@ -1,5 +1,6 @@
 import React, { useId } from "react";
 import { useNavigate } from "react-router-dom";
+import HomeNav from "../HomeNav/HomeNav";
 
 function HomeLogin() {
   const id = useId();
@@ -7,6 +8,8 @@ function HomeLogin() {
 
   return (
     <section className="loginContainer">
+      <HomeNav />
+
       <article className="loginContainer__article">
         <h3>Zaloguj się</h3>
 

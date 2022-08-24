@@ -1,13 +1,16 @@
 @use "sass:map";
 
-section.loginContainer {
+section.registerContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
 
   height: 100vh;
 
-  > article.loginContainer__article {
+  padding: 0 25px;
+
+  > article.registerContainer__article {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,21 +21,25 @@ section.loginContainer {
     width: 505px;
     min-height: 325px;
 
+    margin: auto;
+
     > h3 {
       font-size: 40px;
       text-align: center;
       letter-spacing: -0.8px;
     }
 
-    > div.loginContainer__article__fancy-border {
+    > div.registerContainer__article__fancy-border {
       @extend %fancy-border;
     }
 
-    > form.loginContainer__article__form {
+    > form.registerContainer__article__form {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+
+      padding: 30px 0;
 
       > div {
         display: flex;
@@ -67,7 +74,7 @@ section.loginContainer {
       background-color: map.get($colors, "very-light-gray");
     }
 
-    > div.loginContainer__article__btns {
+    > div.registerContainer__article__btns {
       display: flex;
       justify-content: space-between;
 

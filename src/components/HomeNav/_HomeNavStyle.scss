@@ -1,0 +1,56 @@
+@use "sass:map";
+
+nav.navContainer {
+  display: flex;
+  flex-direction: column;
+
+  > div.navContainer__loginRegister {
+    align-self: flex-end;
+    padding: 25px 0;
+
+    > button {
+      @extend %btn-reset;
+      color: map.get($colors, "light-gray");
+
+      font-size: 14px;
+
+      &:last-of-type {
+        padding: 10px 25px;
+        margin-left: 20px;
+
+        border: 1px solid map.get($colors, "gold");
+
+        &:hover {
+          background-color: map.get($colors, "gold");
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  > nav.navContainer__navigation {
+    height: 42px;
+    width: 683px;
+
+    > ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      height: 100%;
+
+      > li {
+        color: map.get($colors, "dark-gray");
+
+        padding: 10px 10px;
+
+        list-style: none;
+
+        &:hover {
+          border: 1px solid map.get($colors, "dark-gray");
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

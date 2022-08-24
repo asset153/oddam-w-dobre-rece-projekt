@@ -5,8 +5,10 @@
 @import "./settings/mixins";
 @import "./settings/placeholders";
 @import "../components/Home/HomeStyle";
-@import "../components/HomeHeader/HomeHeader";
-@import "../components/HomeLogin/HomeLoginStyle.scss";
+@import "../components/HomeHeader/HomeHeaderStyle";
+@import "../components/HomeNav/HomeNavStyle";
+@import "../components/HomeLogin/HomeLoginStyle";
+@import "../components/HomeRegister/HomeRegisterStyle";
 
 body {
   font-family: $font-base;
