@@ -6,6 +6,7 @@
 @import "./settings/placeholders";
 @import "../components/Home/HomeStyle";
 @import "../components/HomeHeader/HomeHeader";
+@import "../components/HomeLogin/HomeLoginStyle.scss";
 
 body {
   font-family: $font-base;

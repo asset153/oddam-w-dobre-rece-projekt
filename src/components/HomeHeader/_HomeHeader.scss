@@ -2,17 +2,22 @@
 
 header.headerContainer {
   display: flex;
+
+  width: 100%;
   min-height: 100vh;
 
   > div.header__img {
     display: none;
+
     @include desktop() {
       display: block;
       height: 100vh;
       width: 885px;
 
-      background-size: 100% 100%;
-      background-position: center;
+      width: 45%;
+
+      background-size: cover;
+      background-position: center right;
       background-image: url("assets/Home-Hero-Image.jpg");
       background-repeat: no-repeat;
     }
@@ -25,9 +30,13 @@ header.headerContainer {
     align-items: flex-end;
 
     height: 100vh;
+    width: 55%;
+
+    padding: 0 25px;
 
     > div.header__content__loginRegister {
       align-self: flex-end;
+      padding: 25px 0;
 
       > button {
         @extend %btn-reset;
@@ -40,6 +49,11 @@ header.headerContainer {
           margin-left: 20px;
 
           border: 1px solid map.get($colors, "gold");
+
+          &:hover {
+            background-color: map.get($colors, "gold");
+            color: #fff;
+          }
         }
       }
     }
@@ -89,12 +103,7 @@ header.headerContainer {
       }
 
       > div.header__content__titleAndBtns__border {
-        width: 253px;
-        height: 33px;
-
-        background-size: 100% 100%;
-        background-position: center;
-        background-image: url("assets/Decoration.svg");
+        @extend %fancy-border;
       }
 
       > div.header__content__titleAndBtns__buttons {

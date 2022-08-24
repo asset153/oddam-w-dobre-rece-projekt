@@ -1,0 +1,89 @@
+@use "sass:map";
+
+section.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+
+  > article.loginContainer__article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    row-gap: 30px;
+
+    width: 505px;
+    min-height: 325px;
+
+    > h3 {
+      font-size: 40px;
+      text-align: center;
+      letter-spacing: -0.8px;
+    }
+
+    > div.loginContainer__article__fancy-border {
+      @extend %fancy-border;
+    }
+
+    > form.loginContainer__article__form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+
+        width: 250px;
+        height: 60px;
+
+        margin: 10px 0;
+
+        > label {
+          font-size: 16px;
+          color: map.get($colors, "dark-gray");
+          font-weight: 600;
+        }
+
+        > input {
+          margin-top: 20px;
+
+          background-color: transparent;
+
+          border: none;
+          border-bottom: 1px solid map.get($colors, "light-gray");
+
+          outline: none;
+        }
+      }
+
+      width: 385px;
+      height: 235px;
+
+      background-color: map.get($colors, "very-light-gray");
+    }
+
+    > div.loginContainer__article__btns {
+      display: flex;
+      justify-content: space-between;
+
+      width: 100%;
+
+      > button {
+        @extend %btn-reset;
+
+        font-weight: 300;
+
+        &:last-of-type {
+          padding: 10px 25px;
+
+          border: 1px solid map.get($colors, "dark-gray");
+        }
+      }
+    }
+  }
+}
