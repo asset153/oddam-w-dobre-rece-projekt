@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, animateScroll as scroll } from "react-scroll";
 import { useNavigate } from "react-router-dom";
 
 function HomeNav() {
@@ -21,8 +22,14 @@ function HomeNav() {
 
       <nav className="navContainer__navigation">
         <ul>
-          <li>Start</li>
-          <li>O co chodzi?</li>
+          <li>
+            <Link>Start</Link>
+          </li>
+          <li>
+            <Link to="simplySteps" smooth={true} duration={500}>
+              O co chodzi?
+            </Link>
+          </li>
           <li>O nas</li>
           <li>Fundacje i organizacje</li>
           <li>Kontakt</li>
