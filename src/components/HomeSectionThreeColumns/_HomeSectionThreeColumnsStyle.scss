@@ -1,0 +1,42 @@
+@use "sass:map";
+
+section.sectionThreeColumnsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  min-height: 385px;
+  width: 100%;
+
+  background: url("assets/3-Columns-Background.png");
+  background-position: center;
+  background-size: cover;
+
+  > article.sectionThreeColumnsContainer__article {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    width: 25%;
+
+    color: map.get($colors, "dirty-gold");
+
+    > span.sectionThreeColumnsContainer__article__titleCount {
+      font-size: 90px;
+      font-weight: 300;
+    }
+
+    > span.sectionThreeColumnsContainer__article__content {
+      margin: 30px 0;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: -0.36px;
+    }
+
+    > p {
+      font-size: 18px;
+      letter-spacing: -0.32px;
+      line-height: 1.8;
+    }
+  }
+}
