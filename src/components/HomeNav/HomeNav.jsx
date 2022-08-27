@@ -23,7 +23,7 @@ function HomeNav() {
       <nav className="navContainer__navigation">
         <ul>
           <li>
-            <Link>Start</Link>
+            <Link to="/">Start</Link>
           </li>
           <li>
             <Link to="simplySteps" smooth={true} duration={500}>
