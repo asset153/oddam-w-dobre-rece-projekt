@@ -30,7 +30,11 @@ function HomeNav() {
               O co chodzi?
             </Link>
           </li>
-          <li>O nas</li>
+          <li>
+            <Link to="aboutUs" smooth={true} duration={500}>
+              O nas
+            </Link>
+          </li>
           <li>Fundacje i organizacje</li>
           <li>Kontakt</li>
         </ul>
