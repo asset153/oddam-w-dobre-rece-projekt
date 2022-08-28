@@ -1,0 +1,44 @@
+@use "sass:map";
+
+ul.informationContainer {
+  display: flex;
+  flex-direction: column;
+
+  width: 75%;
+
+  > li.informationContainer__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    // width: 1344px;
+    min-height: 80px;
+
+    border-bottom: 1px solid map.get($colors, "dark-gray");
+
+    font-family: $font-alt;
+
+    color: map.get($colors, "dark-gray");
+
+    > div.informationContainer__list__left {
+      > p {
+        text-align: left;
+        &:first-of-type {
+          font: 26px;
+        }
+
+        &:last-of-type {
+          font-size: 18px;
+        }
+      }
+    }
+
+    > div.informationContainer__list__right {
+      > p {
+        font-size: 18px;
+        text-align: left;
+        font-weight: 300;
+      }
+    }
+  }
+}

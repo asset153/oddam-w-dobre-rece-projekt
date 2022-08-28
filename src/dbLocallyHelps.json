@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Zbiórka “Lorem Ipsum 1”",
+        "mission": "Quis varius quam quisque id diam vel quam elementum pulvinar.",
+        "things": "Egestas, sed, tempus"
+    },
+    {
+        "name": "Zbiórka “Lorem Ipsum 2”",
+        "mission": "Hendrerit gravida rutrum quisque non tellus orci ac auctor augue.",
+        "things": "Ut, aliquam, purus, sit, amet"
+    },
+    {
+        "name": "Zbiórka “Lorem Ipsum 3”",
+        "mission": "Scelerisque in dictum non consectetur a erat nam.",
+        "things": "Mi, quis, hendrerit, dolor"
+    }
+]

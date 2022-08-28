@@ -1,0 +1,22 @@
+@use "sass:map";
+
+nav.paginationContainer {
+  > ul.paginationContainer__list {
+    display: flex;
+    column-gap: 20px;
+
+    color: map.get($colors, "dark-gray");
+    li.paginationContainer__list__elements {
+      > button {
+        @extend %btn-reset;
+
+        padding: 10px;
+
+        font-size: 18px;
+        text-align: left;
+
+        border: 1px solid map.get($colors, "dark-gray");
+      }
+    }
+  }
+}
