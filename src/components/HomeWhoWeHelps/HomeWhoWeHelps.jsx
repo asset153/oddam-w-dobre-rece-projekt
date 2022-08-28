@@ -1,58 +1,6 @@
 import React, { useEffect, useState } from "react";
-
-// TODO => separate that component
-const Pagination = function ({ infoPerPage, totalInfo, paginate }) {
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(totalInfo / infoPerPage); i++) {
-    pageNumbers.push(i);
-  }
-
-  if (totalInfo > 3) {
-    return (
-      <nav className="paginationContainer">
-        <ul className="paginationContainer__list">
-          {pageNumbers?.map((number) => {
-            return (
-              <li key={number} className="paginationContainer__list__elements">
-                <button onClick={() => paginate(number)}>{number}</button>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    );
-  } else {
-    return null;
-  }
-};
-//
-
-// TODO => separate that component
-const Information = function ({ informations, loading }) {
-  if (loading) {
-    return <h2>Loading...</h2>;
-  } else {
-    return (
-      <ul className="informationContainer">
-        {informations?.map((item) => {
-          return (
-            <li key={item.name} className="informationContainer__list">
-              <div className="informationContainer__list__left">
-                <p>{item.name}</p>
-                <p>{item.mission}</p>
-              </div>
-              <div className="informationContainer__list__right">
-                <p>{item.things}</p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    );
-  }
-};
-//
+import Informations from "./HomeWhoWeHelps__Informations/HomeWhoWeHelps__Informations";
+import Pagination from "./HomeWhoWeHelps__Pagination/HomeWhoWeHelps__Pagination";
 
 function HomeWhoWeHelps() {
   const [whichOrganization, setWhichOrganization] = useState("Fundations");
@@ -91,17 +39,39 @@ function HomeWhoWeHelps() {
   const chooseOrganization = (org) => setWhichOrganization(org);
 
   return (
-    <section className="sectionWhoWeHelpContainer">
+    <section className="sectionWhoWeHelpContainer" name="whoWeHelps">
       <h4>Komu pomagamy?</h4>
       <img src="assets/Decoration.svg" alt="fancy border" />
       <div className="sectionWhoWeHelpContainer__kindsOfInstitution">
-        <button onClick={() => chooseOrganization("Fundations")}>
+        <button
+          onClick={() => chooseOrganization("Fundations")}
+          style={{
+            border:
+              whichOrganization === "Fundations" ? "1px solid #3c3c3c" : "none",
+          }}
+        >
           Fundacjom
         </button>
-        <button onClick={() => chooseOrganization("NonProfitOrganizations")}>
+        <button
+          onClick={() => chooseOrganization("NonProfitOrganizations")}
+          style={{
+            border:
+              whichOrganization === "NonProfitOrganizations"
+                ? "1px solid #3c3c3c"
+                : "none",
+          }}
+        >
           Organizacjom <br /> pozarządowym
         </button>
-        <button onClick={() => chooseOrganization("LocallyHelps")}>
+        <button
+          onClick={() => chooseOrganization("LocallyHelps")}
+          style={{
+            border:
+              whichOrganization === "LocallyHelps"
+                ? "1px solid #3c3c3c"
+                : "none",
+          }}
+        >
           Lokalnym zbiórkom
         </button>
       </div>
@@ -112,7 +82,7 @@ function HomeWhoWeHelps() {
         potrzebują.
       </p>
 
-      <Information informations={currentInfo} loading={loading} />
+      <Informations informations={currentInfo} loading={loading} />
       <Pagination
         infoPerPage={infoPerPage}
         totalInfo={informationsDATA?.length}

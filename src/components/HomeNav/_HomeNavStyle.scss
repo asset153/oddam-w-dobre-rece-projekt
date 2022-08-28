@@ -4,6 +4,10 @@ nav.navContainer {
   display: flex;
   flex-direction: column;
 
+  @include tablet() {
+    display: none;
+  }
+
   > div.navContainer__loginRegister {
     align-self: flex-end;
     padding: 25px 0;

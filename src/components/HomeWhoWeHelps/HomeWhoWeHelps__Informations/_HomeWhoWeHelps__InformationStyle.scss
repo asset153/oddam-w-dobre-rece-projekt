@@ -24,7 +24,7 @@ ul.informationContainer {
       > p {
         text-align: left;
         &:first-of-type {
-          font: 26px;
+          font-size: 26px;
         }
 
         &:last-of-type {
@@ -36,7 +36,7 @@ ul.informationContainer {
     > div.informationContainer__list__right {
       > p {
         font-size: 18px;
-        text-align: left;
+        text-align: right;
         font-weight: 300;
       }
     }

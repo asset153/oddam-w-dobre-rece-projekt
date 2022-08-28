@@ -26,16 +26,20 @@ function HomeNav() {
             <Link to="/">Start</Link>
           </li>
           <li>
-            <Link to="simplySteps" smooth={true} duration={500}>
+            <Link to="simplySteps" smooth={true} duration={500} offset={-150}>
               O co chodzi?
             </Link>
           </li>
           <li>
-            <Link to="aboutUs" smooth={true} duration={500}>
+            <Link to="aboutUs" smooth={true} duration={500} offset={-150}>
               O nas
             </Link>
           </li>
-          <li>Fundacje i organizacje</li>
+          <li>
+            <Link to="whoWeHelps" smooth={true} duration={500}>
+              Fundacje i organizacje
+            </Link>
+          </li>
           <li>Kontakt</li>
         </ul>
       </nav>
