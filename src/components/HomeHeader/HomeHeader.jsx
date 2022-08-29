@@ -21,7 +21,7 @@ function HomeHeader() {
           <h1>
             Zacznij pomagać! <br /> Oddaj niechciane rzeczy w zaufane ręce
           </h1>
-          <div className="header__content__titleAndBtns__border"></div>
+          <img src="assets/Decoration.svg" alt="fancy border" />
           <div className="header__content__titleAndBtns__buttons">
             <button onClick={() => handleClickNavigate("/logowanie")}>
               Oddaj <br /> rzeczy

@@ -6,6 +6,9 @@ header.headerContainer {
   width: 100%;
   min-height: 100vh;
 
+  @include tablet() {
+  }
+
   > div.header__img {
     display: block;
     height: 100vh;
@@ -34,6 +37,10 @@ header.headerContainer {
 
     padding: 0 25px;
 
+    @include tablet() {
+      width: auto;
+    }
+
     > div.header__content__titleAndBtns {
       display: flex;
       flex-direction: column;
@@ -45,15 +52,21 @@ header.headerContainer {
       width: 675px;
       height: 350px;
 
+      @include tablet() {
+        width: auto;
+        row-gap: 25px;
+      }
+
       > h1 {
         text-align: center;
         font-size: 38px;
         letter-spacing: -0.76px;
         line-height: 1.75;
-      }
 
-      > div.header__content__titleAndBtns__border {
-        @extend %fancy-border;
+        @include tablet() {
+          font-size: calc(38px / 1.5);
+          line-height: 1.25;
+        }
       }
 
       > div.header__content__titleAndBtns__buttons {
@@ -61,6 +74,15 @@ header.headerContainer {
         justify-content: space-between;
 
         width: 100%;
+
+        @include tablet() {
+          flex-direction: column;
+          align-items: center;
+
+          row-gap: 20px;
+
+          width: auto;
+        }
 
         > button {
           @extend %btn-reset;
@@ -76,6 +98,10 @@ header.headerContainer {
           text-align: center;
           font-weight: 300;
           text-transform: uppercase;
+
+          @include tablet() {
+            font-size: calc(30px);
+          }
         }
       }
     }

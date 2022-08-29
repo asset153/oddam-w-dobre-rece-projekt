@@ -13,6 +13,7 @@ section.sectionSimplyStepsContainer {
   > h2 {
     font-size: 38px;
     letter-spacing: -0.76px;
+    text-align: center;
     margin-bottom: 40px;
   }
 
@@ -30,6 +31,15 @@ section.sectionSimplyStepsContainer {
     margin: auto;
 
     background-color: map.get($colors, "very-light-gray");
+
+    @include tablet() {
+      flex-direction: column;
+      row-gap: 35px;
+      column-gap: 0;
+
+      padding: 35px 0;
+      margin: 35px 0;
+    }
 
     > div.sectionSimplyStepsContainer__article__container {
       display: flex;
@@ -69,5 +79,9 @@ section.sectionSimplyStepsContainer {
     text-transform: uppercase;
     color: map.get($colors, "dark-gray");
     text-align: center;
+
+    @include tablet() {
+      font-size: 30px;
+    }
   }
 }

@@ -2,6 +2,10 @@ section.sectionAboutUsContainer {
   display: flex;
   justify-content: space-between;
 
+  @include tablet() {
+    flex-direction: column;
+  }
+
   > article {
     display: flex;
     flex-direction: column;
@@ -17,6 +21,12 @@ section.sectionAboutUsContainer {
     color: map-get($colors, "dark-gray");
     background-color: map-get($colors, "very-light-gray");
 
+    @include tablet() {
+      width: auto;
+      row-gap: 15px;
+      padding: 0 50px;
+    }
+
     > h3 {
       font-size: 38px;
       letter-spacing: -0.76px;
@@ -27,16 +37,28 @@ section.sectionAboutUsContainer {
       letter-spacing: -0.6px;
       line-height: 1.5;
       text-align: center;
+
+      @include tablet() {
+        font-size: 22px;
+      }
     }
 
     > img {
       &:last-of-type {
         align-self: flex-end;
+
+        @include tablet() {
+          width: 35%;
+        }
       }
     }
   }
 
   > img {
     width: 50%;
+
+    @include tablet() {
+      width: auto;
+    }
   }
 }

@@ -12,6 +12,10 @@ section.sectionThreeColumnsContainer {
   background-position: center;
   background-size: cover;
 
+  @include tablet() {
+    flex-direction: column;
+  }
+
   > article.sectionThreeColumnsContainer__article {
     display: flex;
     flex-direction: column;
@@ -21,9 +25,17 @@ section.sectionThreeColumnsContainer {
 
     color: map.get($colors, "dirty-gold");
 
+    @include tablet() {
+      width: auto;
+    }
+
     > span.sectionThreeColumnsContainer__article__titleCount {
       font-size: 90px;
       font-weight: 300;
+
+      @include tablet() {
+        font-size: calc(90px / 1.25);
+      }
     }
 
     > span.sectionThreeColumnsContainer__article__content {
@@ -37,6 +49,10 @@ section.sectionThreeColumnsContainer {
       font-size: 18px;
       letter-spacing: -0.32px;
       line-height: 1.8;
+
+      @include tablet() {
+        font-size: 16px;
+      }
     }
   }
 }

@@ -6,12 +6,16 @@ ul.informationContainer {
 
   width: 75%;
 
+  @include tablet() {
+    width: auto;
+    margin: 35px 0;
+  }
+
   > li.informationContainer__list {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    // width: 1344px;
     min-height: 80px;
 
     border-bottom: 1px solid map.get($colors, "dark-gray");
@@ -25,10 +29,18 @@ ul.informationContainer {
         text-align: left;
         &:first-of-type {
           font-size: 26px;
+
+          @include tablet() {
+            font-size: 22px;
+          }
         }
 
         &:last-of-type {
           font-size: 18px;
+
+          @include tablet() {
+            font-size: 16px;
+          }
         }
       }
     }
@@ -38,6 +50,10 @@ ul.informationContainer {
         font-size: 18px;
         text-align: right;
         font-weight: 300;
+
+        @include tablet() {
+          font-size: 16px;
+        }
       }
     }
   }
