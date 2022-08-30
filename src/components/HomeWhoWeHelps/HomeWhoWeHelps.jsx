@@ -38,6 +38,30 @@ function HomeWhoWeHelps() {
   // fn choose organization
   const chooseOrganization = (org) => setWhichOrganization(org);
 
+  const FundationText = (
+    <p className="sectionWhoWeHelpContainer__content">
+      W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi
+      współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego
+      potrzebują.
+    </p>
+  );
+
+  const NonProfitOrganizationsText = (
+    <p className="sectionWhoWeHelpContainer__content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation.
+    </p>
+  );
+
+  const LocallyHelpsText = (
+    <p className="sectionWhoWeHelpContainer__content">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam laborum
+      accusamus, vitae neque eveniet praesentium asperiores doloribus eos
+      sapiente modi facere, recusandae, fuga soluta possimus!
+    </p>
+  );
+
   return (
     <section className="sectionWhoWeHelpContainer" name="whoWeHelps">
       <h4>Komu pomagamy?</h4>
@@ -76,11 +100,10 @@ function HomeWhoWeHelps() {
         </button>
       </div>
 
-      <p className="sectionWhoWeHelpContainer__content">
-        W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi
-        współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego
-        potrzebują.
-      </p>
+      {whichOrganization === "Fundations" && FundationText}
+      {whichOrganization === "NonProfitOrganizations" &&
+        NonProfitOrganizationsText}
+      {whichOrganization === "LocallyHelps" && LocallyHelpsText}
 
       <Informations informations={currentInfo} loading={loading} />
       <Pagination
