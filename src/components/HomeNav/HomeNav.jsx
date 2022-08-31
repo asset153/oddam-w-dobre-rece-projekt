@@ -40,7 +40,11 @@ function HomeNav() {
               Fundacje i organizacje
             </Link>
           </li>
-          <li>Kontakt</li>
+          <li>
+            <Link to="contact" smooth={true} duration={500}>
+              Kontakt
+            </Link>
+          </li>
         </ul>
       </nav>
     </nav>

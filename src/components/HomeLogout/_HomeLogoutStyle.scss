@@ -1,0 +1,48 @@
+@use "sass:map";
+
+section.logoutContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  height: 100vh;
+
+  padding: 0 25px;
+
+  article.logoutContainer__article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    row-gap: 30px;
+
+    align-self: center;
+
+    margin: auto;
+
+    > h5 {
+      font-size: 40px;
+      text-align: center;
+      letter-spacing: -0.8px;
+      line-height: 1.25;
+
+      color: map.get($colors, "dark-gray");
+    }
+
+    img {
+    }
+
+    button {
+      @extend %btn-reset;
+
+      padding: 10px 20px;
+
+      border: 1px solid map.get($colors, "dark-gray");
+
+      font-size: 18px;
+      font-weight: 300;
+    }
+  }
+}

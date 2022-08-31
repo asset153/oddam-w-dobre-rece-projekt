@@ -1,0 +1,86 @@
+@use "sass:map";
+
+footer.footerContainer {
+  display: flex;
+  justify-content: flex-end;
+
+  height: 100%;
+
+  min-height: 100vh;
+
+  padding: 0 25px;
+
+  background-image: url("assets/Background-Contact-Form.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  article.footerContainer__article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    row-gap: 20px;
+
+    width: 530px;
+
+    > h6 {
+      font-size: 38px;
+      letter-spacing: -0.8px;
+      text-align: center;
+      color: map.get($colors, "dark-gray");
+    }
+
+    > form.footerContainer__article__form {
+      font-family: $font-base;
+
+      > div {
+        display: flex;
+        margin: 20px 0;
+        &.footerContainer__article__form__container--nameEmail {
+          margin-bottom: 40px;
+        }
+
+        &.footerContainer__article__form__container--textArea {
+          flex-direction: column;
+        }
+
+        label {
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        input,
+        textarea {
+          margin-top: 10px;
+          font-size: 18px;
+          border: none;
+          outline: none;
+          border-bottom: 1px solid map.get($colors, "dark-gray");
+          background-color: transparent;
+
+          &::placeholder {
+            color: #3c3c3c26;
+          }
+        }
+
+        textarea {
+          min-height: 125px;
+        }
+      }
+
+      > button.footerContainer__article__form__container--submit {
+        @extend %btn-reset;
+
+        display: flex;
+
+        margin-left: auto;
+
+        padding: 10px 30px;
+
+        border: 1px solid map.get($colors, "dark-gray");
+      }
+    }
+    // }
+  }
+}

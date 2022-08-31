@@ -9,12 +9,14 @@
 @import "../components/HomeNav/HomeNavStyle";
 @import "../components/HomeLogin/HomeLoginStyle";
 @import "../components/HomeRegister/HomeRegisterStyle";
+@import "../components/HomeLogout/HomeLogoutStyle";
 @import "../components/HomeSectionThreeColumns/HomeSectionThreeColumnsStyle";
 @import "../components/HomeSimplySteps/HomeSimplyStepsStyle";
 @import "../components/HomeAboutUs/HomeAboutUs";
 @import "../components/HomeWhoWeHelps/HomeWhoWeHelpsStyle";
 @import "../components/HomeWhoWeHelps/HomeWhoWeHelps__Informations/HomeWhoWeHelps__InformationStyle";
 @import "../components/HomeWhoWeHelps/HomeWhoWeHelps__Pagination/HomeWhoWeHelps__PaginationStyle";
+@import "../components/HomeFooter/HomeFooterStyle";
 
 body {
   font-family: $font-base;

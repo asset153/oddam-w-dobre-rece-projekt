@@ -12,7 +12,7 @@ const Pagination = function ({ infoPerPage, totalInfo, paginate }) {
     return (
       <nav className="paginationContainer">
         <ul className="paginationContainer__list">
-          {pageNumbers?.map((number, index) => {
+          {pageNumbers?.map((number) => {
             return (
               <li key={number} className="paginationContainer__list__elements">
                 <button

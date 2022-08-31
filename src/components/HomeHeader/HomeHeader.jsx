@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-scroll";
 import HomeNav from "../HomeNav/HomeNav";
 
 function HomeHeader() {

@@ -1,5 +1,6 @@
 import React from "react";
 import HomeAboutUs from "../HomeAboutUs/HomeAboutUs";
+import HomeFooter from "../HomeFooter/HomeFooter";
 import HomeHeader from "../HomeHeader/HomeHeader";
 import HomeSectionThreeColumns from "../HomeSectionThreeColumns/HomeSectionThreeColumns";
 import HomeSimplySteps from "../HomeSimplySteps/HomeSimplySteps";
@@ -13,6 +14,7 @@ function Home() {
       <HomeSimplySteps />
       <HomeAboutUs />
       <HomeWhoWeHelps />
+      <HomeFooter />
     </main>
   );
 }
