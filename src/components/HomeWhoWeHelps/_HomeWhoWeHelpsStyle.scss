@@ -9,6 +9,8 @@ section.sectionWhoWeHelpContainer {
   min-height: calc(100vh - 100px);
   margin: 50px 0;
 
+  row-gap: 25px;
+
   color: map.get($colors, "dark-gray");
 
   > h4 {

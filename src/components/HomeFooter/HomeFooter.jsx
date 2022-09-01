@@ -31,6 +31,15 @@ function HomeFooter() {
           </button>
         </form>
       </article>
+      <aside className="footerContainer__aside">
+        <span className="footerContainer__aside__copyright">
+          Copyright by Coders Lab
+        </span>
+        <div className="footerContainer__aside__icons">
+          <img src="assets/Facebook.svg" alt="facebook icon" />
+          <img src="assets/Instagram.svg" alt="instagram icon" />
+        </div>
+      </aside>
     </footer>
   );
 }

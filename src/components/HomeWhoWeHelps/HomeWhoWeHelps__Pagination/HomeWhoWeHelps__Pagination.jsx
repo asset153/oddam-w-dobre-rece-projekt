@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const Pagination = function ({ infoPerPage, totalInfo, paginate }) {
   const pageNumbers = [];
-  const [currNumber, setCurrNumber] = useState(1);
 
   for (let i = 1; i <= Math.ceil(totalInfo / infoPerPage); i++) {
     pageNumbers.push(i);
@@ -15,18 +14,7 @@ const Pagination = function ({ infoPerPage, totalInfo, paginate }) {
           {pageNumbers?.map((number) => {
             return (
               <li key={number} className="paginationContainer__list__elements">
-                <button
-                  onClick={() => {
-                    paginate(number);
-                    setCurrNumber(number);
-                  }}
-                  style={{
-                    border:
-                      number === currNumber ? "1px solid #3c3c3c" : "none",
-                  }}
-                >
-                  {number}
-                </button>
+                <button onClick={() => paginate(number)}>{number}</button>
               </li>
             );
           })}

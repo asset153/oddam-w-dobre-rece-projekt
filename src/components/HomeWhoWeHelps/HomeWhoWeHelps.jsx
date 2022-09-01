@@ -36,7 +36,10 @@ function HomeWhoWeHelps() {
   //
 
   // fn choose organization
-  const chooseOrganization = (org) => setWhichOrganization(org);
+  const chooseOrganization = (org) => {
+    setWhichOrganization(org);
+    setCurrentPage(1);
+  };
 
   const FundationText = (
     <p className="sectionWhoWeHelpContainer__content">
