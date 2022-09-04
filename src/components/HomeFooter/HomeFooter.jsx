@@ -1,4 +1,5 @@
 import React, { useId, useRef, useEffect, useState } from "react";
+import axios from "axios";
 import validateUserName from "../../utilities/regexUserName";
 import validateEmail from "../../utilities/regexUserEmail";
 
@@ -21,6 +22,28 @@ function HomeFooter() {
   //     return false;
   //   }
   // };
+
+  const sendMessage = async function () {
+    try {
+      const response = await axios.get(
+        "https://fer-api.coderslab.pl/v1/portfolio/contact"
+      );
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  axios
+    .get("https://fer-api.coderslab.pl/v1/portfolio/contact")
+    .then(function (response) {
+      console.log(response.data);
+      console.log(response.status);
+      console.log(response.statusText);
+      console.log(response.headers);
+      console.log(response.config);
+    });
 
   const validateFn = () => {
     if (
@@ -82,15 +105,11 @@ function HomeFooter() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     validateFn();
-
-    try {
-    } catch (error) {
-      console.log(error);
-    }
+    sendMessage();
   };
 
   return (
@@ -100,7 +119,7 @@ function HomeFooter() {
 
         <img src="assets/Decoration.svg" alt="fancy border" />
 
-        <div
+        {/* <div
           style={{
             display:
               !error.name && !error.email && !error.textarea ? "block" : "none",
@@ -111,7 +130,7 @@ function HomeFooter() {
           Wiadomość została wysłana!
           <br />
           Wkrótce się skontaktujemy
-        </div>
+        </div> */}
 
         <form className="footerContainer__article__form">
           <div className="footerContainer__article__form__container--nameEmail">

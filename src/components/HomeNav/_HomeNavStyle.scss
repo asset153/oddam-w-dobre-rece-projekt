@@ -32,6 +32,35 @@ nav.navContainer {
     }
   }
 
+  > div.navContainer__SignIn {
+    align-self: flex-end;
+    padding: 25px 0;
+
+    > span {
+      font-size: 14px;
+    }
+
+    > button {
+      @extend %btn-reset;
+      color: map.get($colors, "light-gray");
+
+      font-size: 14px;
+
+      &:first-of-type {
+        padding: 10px 10px;
+        margin-left: 20px;
+        margin-right: 10px;
+
+        border: 1px solid map.get($colors, "gold");
+
+        &:hover {
+          background-color: map.get($colors, "gold");
+          color: #fff;
+        }
+      }
+    }
+  }
+
   > nav.navContainer__navigation {
     height: 42px;
     width: 683px;

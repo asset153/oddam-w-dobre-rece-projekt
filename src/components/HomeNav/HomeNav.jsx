@@ -1,28 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
+import { supabase } from "../../supabaseClient";
 import { useNavigate } from "react-router-dom";
 
 function HomeNav() {
   const navigate = useNavigate();
+  const session = supabase.auth.session();
+
+  console.log(session);
 
   const handleClickNavigate = (location) => {
     return navigate(location);
   };
 
+  const handleClickSignOut = async () => {
+    await supabase.auth.signOut();
+    navigate("/");
+  };
+
+  const userSessionSignIn = (
+    <div className="navContainer__SignIn">
+      <span>Cześć {session?.user.email}</span>
+      <button>Oddaj rzeczy</button>
+      <button onClick={handleClickSignOut}>Wyloguj</button>
+    </div>
+  );
+
+  const userSessionSignOut = (
+    <div className="navContainer__loginRegister">
+      <button onClick={() => handleClickNavigate("/logowanie")}>Zaloguj</button>
+      <button onClick={() => handleClickNavigate("/rejestracja")}>
+        Załóż konto
+      </button>
+    </div>
+  );
+
   return (
     <nav className="navContainer">
-      <div className="navContainer__loginRegister">
-        <button onClick={() => handleClickNavigate("/logowanie")}>
-          Zaloguj
-        </button>
-        <button onClick={() => handleClickNavigate("/rejestracja")}>
-          Załóż konto
-        </button>
-      </div>
+      {session ? userSessionSignIn : userSessionSignOut}
 
       <nav className="navContainer__navigation">
         <ul>
-          <li>
+          <li onClick={() => navigate("/")}>
             <Link to="/">Start</Link>
           </li>
           <li>

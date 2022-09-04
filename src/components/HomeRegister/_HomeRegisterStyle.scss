@@ -85,6 +85,18 @@ section.registerContainer {
 
         font-weight: 300;
 
+        &:first-of-type {
+          padding: 10px 25px;
+          margin-left: 20px;
+
+          border: 1px solid map.get($colors, "gold");
+
+          &:hover {
+            background-color: map.get($colors, "gold");
+            color: #fff;
+          }
+        }
+
         &:last-of-type {
           padding: 10px 25px;
 
