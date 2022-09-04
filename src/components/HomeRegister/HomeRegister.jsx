@@ -1,4 +1,4 @@
-import React, { useId, useState } from "react";
+import React, { useId, useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
 import validateEmail from "../../utilities/regexUserEmail";
@@ -8,11 +8,9 @@ function HomeLogin() {
   const id = useId();
   const navigate = useNavigate();
 
-  const [userValues, setUserValues] = useState({
-    email: "",
-    password: "",
-    repeatPassword: "",
-  });
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+  const repeatPasswordRef = useRef("");
 
   const [userValueErrors, SetUserValueErrors] = useState({
     email: false,
@@ -21,81 +19,87 @@ function HomeLogin() {
   });
 
   const validateSignUp = () => {
-    if (validateEmail(userValues.email) && userValues.email.length > 0) {
-      console.log(true);
-      SetUserValueErrors((prevState) => {
-        return {
-          ...prevState,
-          email: false,
-        };
-      });
-    } else {
+    if (
+      !validateEmail(emailRef.current.value) ||
+      emailRef.current.value.length === 0
+    ) {
       SetUserValueErrors((prevState) => {
         return {
           ...prevState,
           email: true,
         };
       });
-    }
-
-    if (userValues.password >= 6 && userValues.password.length > 0) {
+      return true;
+    } else {
       SetUserValueErrors((prevState) => {
         return {
           ...prevState,
-          password: false,
+          email: false,
         };
       });
-    } else {
+    }
+
+    if (
+      passwordRef.current.value < 6 ||
+      passwordRef.current.value.length === 0
+    ) {
       SetUserValueErrors((prevState) => {
         return {
           ...prevState,
           password: true,
         };
       });
-    }
-
-    if (
-      userValues.repeatPassword === userValues.password &&
-      userValues.repeatPassword.length > 0
-    ) {
+      return true;
+    } else {
       SetUserValueErrors((prevState) => {
         return {
           ...prevState,
-          repeatPassword: false,
+          password: false,
         };
       });
-    } else {
+    }
+
+    if (
+      repeatPasswordRef.current.value !== passwordRef.current.value ||
+      repeatPasswordRef.current.value.length === 0
+    ) {
       SetUserValueErrors((prevState) => {
         return {
           ...prevState,
           repeatPassword: true,
         };
       });
+      return true;
+    } else {
+      SetUserValueErrors((prevState) => {
+        return {
+          ...prevState,
+          repeatPassword: false,
+        };
+      });
     }
-  };
 
-  const handleChange = function (e) {
-    setUserValues((prevState) => {
-      return {
-        ...prevState,
-        [e.target.name]: e.target.value,
-      };
-    });
+    return false;
   };
 
   const signUp = async () => {
-    // validateSignUp();
+    try {
+      if (validateSignUp() === false) {
+        const { user, session, error } = await supabase.auth.signUp({
+          email: emailRef.current.value,
+          password: passwordRef.current.value,
+        });
+        console.log("user", user);
+        console.log("session", session);
+        console.log("error", error);
 
-    console.log(supabase);
-
-    // const { user, session, error } = await supabase.auth.signUp({
-    //   email: "example@email.com",
-    //   password: "example-password",
-    // });
-
-    // console.log("user", user);
-    // console.log("session", session);
-    // console.log("error", error);
+        document.getElementById("register-form").reset();
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -107,15 +111,14 @@ function HomeLogin() {
 
         <div className="registerContainer__article__fancy-border"></div>
 
-        <form className="registerContainer__article__form">
+        <form id="register-form" className="registerContainer__article__form">
           <div>
             <label htmlFor={`email${id}`}>Email</label>
             <input
               type="email"
               id={`email${id}`}
-              value={userValues.email}
-              name="email"
-              onChange={handleChange}
+              ref={emailRef}
+              required
               style={{
                 borderBottom: userValueErrors.email
                   ? "1px solid red"
@@ -138,9 +141,8 @@ function HomeLogin() {
             <input
               type="password"
               id={`password${id}`}
-              name="password"
-              value={userValues.password}
-              onChange={handleChange}
+              ref={passwordRef}
+              required
               style={{
                 borderBottom: userValueErrors.password
                   ? "1px solid red"
@@ -163,9 +165,8 @@ function HomeLogin() {
             <input
               type="password"
               id={`repeat-password${id}`}
-              name="repeatPassword"
-              value={userValues.repeatPassword}
-              onChange={handleChange}
+              ref={repeatPasswordRef}
+              required
               style={{
                 borderBottom: userValueErrors.repeatPassword
                   ? "1px solid red"
@@ -185,7 +186,7 @@ function HomeLogin() {
         </form>
 
         <div className="registerContainer__article__btns">
-          <button onClick={validateSignUp}>Załóż konto</button>
+          <button onClick={signUp}>Załóż konto</button>
           <button onClick={() => navigate("/logowanie")}>Zaloguj się</button>
         </div>
       </article>
@@ -194,4 +195,3 @@ function HomeLogin() {
 }
 
 export default HomeLogin;
-// mat@mat.com

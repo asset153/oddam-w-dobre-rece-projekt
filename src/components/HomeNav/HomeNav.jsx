@@ -7,15 +7,13 @@ function HomeNav() {
   const navigate = useNavigate();
   const session = supabase.auth.session();
 
-  console.log(session);
-
   const handleClickNavigate = (location) => {
     return navigate(location);
   };
 
   const handleClickSignOut = async () => {
     await supabase.auth.signOut();
-    navigate("/");
+    navigate("/wylogowano");
   };
 
   const userSessionSignIn = (
@@ -41,8 +39,10 @@ function HomeNav() {
 
       <nav className="navContainer__navigation">
         <ul>
-          <li onClick={() => navigate("/")}>
-            <Link to="/">Start</Link>
+          <li>
+            <Link to="/" onClick={() => navigate("/")}>
+              Start
+            </Link>
           </li>
           <li>
             <Link to="simplySteps" smooth={true} duration={500}>

@@ -14,10 +14,10 @@ function HomeLogin() {
 
   const signIn = async () => {
     const { user, session, error } = await supabase.auth.signIn({
-      // email: emailRef.current.value,
-      // password: passwordRef.current.value,
-      email: "example@email.com",
-      password: "example-password",
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      // email: "example@email.com",
+      // password: "example-password",
     });
 
     if (!error) {
@@ -26,13 +26,6 @@ function HomeLogin() {
     } else {
       SetCorrectLogin(false);
     }
-
-    console.log("user", user);
-    console.log("session", session);
-    console.log("error", error);
-
-    // email: 'example@email.com',
-    // password: 'example-password',
   };
 
   return (
@@ -47,12 +40,22 @@ function HomeLogin() {
         <form className="loginContainer__article__form">
           <div>
             <label htmlFor={`email${id}`}>Email</label>
-            <input type="text" id={`email${id}`} ref={emailRef} />
+            <input
+              type="text"
+              id={`email${id}`}
+              ref={emailRef}
+              defaultValue="example@email.com"
+            />
           </div>
 
           <div>
             <label htmlFor={`password${id}`}>Password</label>
-            <input type="password" id={`password${id}`} ref={passwordRef} />
+            <input
+              type="password"
+              id={`password${id}`}
+              ref={passwordRef}
+              defaultValue="example-password"
+            />
           </div>
 
           <div

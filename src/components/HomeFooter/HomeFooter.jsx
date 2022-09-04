@@ -10,40 +10,10 @@ function HomeFooter() {
     email: false,
     textarea: false,
   });
+  const [showMessageStatus200, setShowMessageStatus200] = useState(false);
   const userNameRef = useRef("");
   const userEmailRef = useRef("");
   const userTextArea = useRef("");
-
-  // TODO =>
-  // const showMessage = () => {
-  //   if (!error.name && !error.email && !error.textarea) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // };
-
-  const sendMessage = async function () {
-    try {
-      const response = await axios.get(
-        "https://fer-api.coderslab.pl/v1/portfolio/contact"
-      );
-
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  axios
-    .get("https://fer-api.coderslab.pl/v1/portfolio/contact")
-    .then(function (response) {
-      console.log(response.data);
-      console.log(response.status);
-      console.log(response.statusText);
-      console.log(response.headers);
-      console.log(response.config);
-    });
 
   const validateFn = () => {
     if (
@@ -105,12 +75,49 @@ function HomeFooter() {
     }
   };
 
+  const sendMessage = async function () {
+    try {
+      const response = await fetch(
+        "https://fer-api.coderslab.pl/v1/portfolio/contact",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          method: "POST",
+          body: JSON.stringify({
+            name: userNameRef.current.value,
+            email: userEmailRef.current.value,
+            message: userTextArea.current.value,
+          }),
+        }
+      );
+
+      if (response.status === 200) {
+        document.getElementById("form").reset();
+        setShowMessageStatus200(true);
+      } else {
+        setShowMessageStatus200(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     validateFn();
     sendMessage();
   };
+
+  const messageStatus200 = (
+    <div style={{ color: "green" }}>
+      Wiadomość została wysłana!
+      <br />
+      Wkrótce się skontaktujemy
+    </div>
+  );
 
   return (
     <footer className="footerContainer" name="contact">
@@ -119,20 +126,9 @@ function HomeFooter() {
 
         <img src="assets/Decoration.svg" alt="fancy border" />
 
-        {/* <div
-          style={{
-            display:
-              !error.name && !error.email && !error.textarea ? "block" : "none",
-            color:
-              !error.name && !error.email && !error.textarea ? "green" : "",
-          }}
-        >
-          Wiadomość została wysłana!
-          <br />
-          Wkrótce się skontaktujemy
-        </div> */}
+        {showMessageStatus200 ? messageStatus200 : null}
 
-        <form className="footerContainer__article__form">
+        <form id="form" className="footerContainer__article__form">
           <div className="footerContainer__article__form__container--nameEmail">
             <div>
               <label htmlFor={`${id}name`}>Wpisz swoje imię</label>
