@@ -18,7 +18,7 @@ function HomeLogin() {
     repeatPassword: false,
   });
 
-  const validateSignUp = () => {
+  const validateEmailSignUp = () => {
     if (
       !validateEmail(emailRef.current.value) ||
       emailRef.current.value.length === 0
@@ -39,8 +39,12 @@ function HomeLogin() {
       });
     }
 
+    return false;
+  };
+
+  const validatePasswordSignUp = () => {
     if (
-      passwordRef.current.value < 6 ||
+      passwordRef.current.value.length < 6 ||
       passwordRef.current.value.length === 0
     ) {
       SetUserValueErrors((prevState) => {
@@ -59,6 +63,10 @@ function HomeLogin() {
       });
     }
 
+    return false;
+  };
+
+  const validateRepeatPasswordSignUp = () => {
     if (
       repeatPasswordRef.current.value !== passwordRef.current.value ||
       repeatPasswordRef.current.value.length === 0
@@ -83,8 +91,16 @@ function HomeLogin() {
   };
 
   const signUp = async () => {
+    validateEmailSignUp();
+    validatePasswordSignUp();
+    validateRepeatPasswordSignUp();
+
     try {
-      if (validateSignUp() === false) {
+      if (
+        !validateEmailSignUp() &&
+        !validatePasswordSignUp() &&
+        !validateRepeatPasswordSignUp()
+      ) {
         const { user, session, error } = await supabase.auth.signUp({
           email: emailRef.current.value,
           password: passwordRef.current.value,
