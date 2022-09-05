@@ -7,20 +7,32 @@ function HomeLogin() {
   const id = useId();
   const navigate = useNavigate();
 
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
+  const [userSignIn, setUserSignIn] = useState({
+    email: "",
+    password: "",
+  });
 
   const [correctLogin, SetCorrectLogin] = useState(true);
 
+  const handleChangeSignIn = (e) => {
+    SetCorrectLogin(true);
+    setUserSignIn((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+
   const signIn = async () => {
-    const { user, session, error } = await supabase.auth.signIn({
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
+    const { error } = await supabase.auth.signIn({
+      email: userSignIn.email,
+      password: userSignIn.password,
       // email: "example@email.com",
       // password: "example-password",
     });
 
-    if (!error) {
+    if (!error && userSignIn.password.length !== 0) {
       SetCorrectLogin(true);
       navigate("/");
     } else {
@@ -40,18 +52,31 @@ function HomeLogin() {
         <form className="loginContainer__article__form">
           <div>
             <label htmlFor={`email${id}`}>Email</label>
-            <input type="text" id={`email${id}`} ref={emailRef} />
+            <input
+              type="email"
+              id={`email${id}`}
+              value={userSignIn.email}
+              onChange={handleChangeSignIn}
+              name="email"
+            />
           </div>
 
           <div>
             <label htmlFor={`password${id}`}>Password</label>
-            <input type="password" id={`password${id}`} ref={passwordRef} />
+            <input
+              type="password"
+              id={`password${id}`}
+              value={userSignIn.password}
+              onChange={handleChangeSignIn}
+              name="password"
+            />
           </div>
 
           <div
             style={{
-              display: !correctLogin && emailRef ? "block" : "none",
-              color: !correctLogin && passwordRef ? "red" : "",
+              display: !correctLogin ? "block" : "none",
+              color: !correctLogin ? "red" : "",
+              height: 0,
             }}
           >
             Nieprawidłowy login lub hasło!

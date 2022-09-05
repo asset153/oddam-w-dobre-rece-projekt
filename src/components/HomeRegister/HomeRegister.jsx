@@ -18,11 +18,30 @@ function HomeLogin() {
     repeatPassword: false,
   });
 
+  const [userSignUp, setUserSignUp] = useState({
+    email: "",
+    password: "",
+    repeatPassword: "",
+  });
+
+  const handleChangeSignUp = (e) => {
+    SetUserValueErrors((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: false,
+      };
+    });
+
+    setUserSignUp((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+
   const validateEmailSignUp = () => {
-    if (
-      !validateEmail(emailRef.current.value) ||
-      emailRef.current.value.length === 0
-    ) {
+    if (!validateEmail(userSignUp.email) || userSignUp.email.length === 0) {
       SetUserValueErrors((prevState) => {
         return {
           ...prevState,
@@ -43,10 +62,7 @@ function HomeLogin() {
   };
 
   const validatePasswordSignUp = () => {
-    if (
-      passwordRef.current.value.length < 6 ||
-      passwordRef.current.value.length === 0
-    ) {
+    if (userSignUp.password.length < 6 || userSignUp.password.length === 0) {
       SetUserValueErrors((prevState) => {
         return {
           ...prevState,
@@ -68,8 +84,8 @@ function HomeLogin() {
 
   const validateRepeatPasswordSignUp = () => {
     if (
-      repeatPasswordRef.current.value !== passwordRef.current.value ||
-      repeatPasswordRef.current.value.length === 0
+      userSignUp.repeatPassword !== userSignUp.password ||
+      userSignUp.repeatPassword.length === 0
     ) {
       SetUserValueErrors((prevState) => {
         return {
@@ -102,8 +118,8 @@ function HomeLogin() {
         !validateRepeatPasswordSignUp()
       ) {
         const { user, session, error } = await supabase.auth.signUp({
-          email: emailRef.current.value,
-          password: passwordRef.current.value,
+          email: userSignUp.email,
+          password: userSignUp.password,
         });
         console.log("user", user);
         console.log("session", session);
@@ -133,7 +149,9 @@ function HomeLogin() {
             <input
               type="email"
               id={`email${id}`}
-              ref={emailRef}
+              name="email"
+              onChange={handleChangeSignUp}
+              value={userSignUp.email}
               required
               style={{
                 borderBottom: userValueErrors.email
@@ -157,7 +175,9 @@ function HomeLogin() {
             <input
               type="password"
               id={`password${id}`}
-              ref={passwordRef}
+              name="password"
+              onChange={handleChangeSignUp}
+              value={userSignUp.password}
               required
               style={{
                 borderBottom: userValueErrors.password
@@ -181,7 +201,9 @@ function HomeLogin() {
             <input
               type="password"
               id={`repeat-password${id}`}
-              ref={repeatPasswordRef}
+              name="repeatPassword"
+              onChange={handleChangeSignUp}
+              value={userSignUp.repeatPassword}
               required
               style={{
                 borderBottom: userValueErrors.repeatPassword
@@ -189,15 +211,15 @@ function HomeLogin() {
                   : "1px solid #3c3c3c",
               }}
             />
-          </div>
 
-          <div
-            style={{
-              display: userValueErrors.repeatPassword ? "block" : "none",
-              color: userValueErrors.repeatPassword ? "red" : "",
-            }}
-          >
-            Podane hasła nie są takie same!
+            <div
+              style={{
+                display: userValueErrors.repeatPassword ? "block" : "none",
+                color: userValueErrors.repeatPassword ? "red" : "",
+              }}
+            >
+              Podane hasła nie są takie same!
+            </div>
           </div>
         </form>
 

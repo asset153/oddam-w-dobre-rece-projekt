@@ -10,6 +10,14 @@ function HomeFooter() {
     email: false,
     textarea: false,
   });
+
+  // TODO =>
+  // const [formValues, setFormValues] = useState({
+  //   name: "",
+  //   email: "",
+  //   textarea: "",
+  // });
+
   const [showMessageStatus200, setShowMessageStatus200] = useState(false);
   const userNameRef = useRef("");
   const userEmailRef = useRef("");
