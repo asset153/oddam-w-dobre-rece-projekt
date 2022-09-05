@@ -1,11 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../../supabaseClient";
 
 function HomeSimplySteps() {
   const navigate = useNavigate();
+  const session = supabase.auth.session();
 
   const handleClickNavigate = (location) => {
-    return navigate(location);
+    return session ? null : navigate(location);
   };
 
   return (

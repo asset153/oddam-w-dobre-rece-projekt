@@ -40,22 +40,12 @@ function HomeLogin() {
         <form className="loginContainer__article__form">
           <div>
             <label htmlFor={`email${id}`}>Email</label>
-            <input
-              type="text"
-              id={`email${id}`}
-              ref={emailRef}
-              defaultValue="example@email.com"
-            />
+            <input type="text" id={`email${id}`} ref={emailRef} />
           </div>
 
           <div>
             <label htmlFor={`password${id}`}>Password</label>
-            <input
-              type="password"
-              id={`password${id}`}
-              ref={passwordRef}
-              defaultValue="example-password"
-            />
+            <input type="password" id={`password${id}`} ref={passwordRef} />
           </div>
 
           <div

@@ -92,8 +92,8 @@ function HomeLogin() {
         console.log("user", user);
         console.log("session", session);
         console.log("error", error);
-
         document.getElementById("register-form").reset();
+        navigate("/");
       } else {
         return null;
       }
