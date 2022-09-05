@@ -16,6 +16,7 @@ function HomeLogin() {
 
   const handleChangeSignIn = (e) => {
     SetCorrectLogin(true);
+
     setUserSignIn((prevState) => {
       return {
         ...prevState,
@@ -58,6 +59,11 @@ function HomeLogin() {
               value={userSignIn.email}
               onChange={handleChangeSignIn}
               name="email"
+              style={{
+                borderBottom: !correctLogin
+                  ? "1px solid red"
+                  : "1px solid #3c3c3c",
+              }}
             />
           </div>
 
@@ -69,6 +75,11 @@ function HomeLogin() {
               value={userSignIn.password}
               onChange={handleChangeSignIn}
               name="password"
+              style={{
+                borderBottom: !correctLogin
+                  ? "1px solid red"
+                  : "1px solid #3c3c3c",
+              }}
             />
           </div>
 
