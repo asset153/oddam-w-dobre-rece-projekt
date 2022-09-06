@@ -6,10 +6,6 @@ function HomeSimplySteps() {
   const navigate = useNavigate();
   const session = supabase.auth.session();
 
-  const handleClickNavigate = (location) => {
-    return session ? null : navigate(location);
-  };
-
   return (
     <section className="sectionSimplyStepsContainer" name="simplySteps">
       <h2>Wystarczą 4 proste kroki</h2>
@@ -42,7 +38,9 @@ function HomeSimplySteps() {
         </div>
       </article>
 
-      <button onClick={() => handleClickNavigate("/logowanie")}>
+      <button
+        onClick={() => navigate(session ? "/oddaj-rzeczy" : "/logowanie")}
+      >
         Oddaj <br /> rzeczy
       </button>
     </section>

@@ -1,0 +1,13 @@
+section.homeFormContainer {
+  display: flex;
+
+  min-height: 885px;
+  width: 100%;
+
+  background-image: url("/assets/Background-Form.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  > img {
+  }
+}

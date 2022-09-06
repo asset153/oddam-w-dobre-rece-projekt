@@ -7,10 +7,6 @@ function HomeNav() {
   const navigate = useNavigate();
   const session = supabase.auth.session();
 
-  const handleClickNavigate = (location) => {
-    return navigate(location);
-  };
-
   const handleClickSignOut = async () => {
     await supabase.auth.signOut();
     navigate("/wylogowano");
@@ -19,17 +15,15 @@ function HomeNav() {
   const userSessionSignIn = (
     <div className="navContainer__SignIn">
       <span>Cześć {session?.user.email}</span>
-      <button>Oddaj rzeczy</button>
+      <button onClick={() => navigate("/oddaj-rzeczy")}>Oddaj rzeczy</button>
       <button onClick={handleClickSignOut}>Wyloguj</button>
     </div>
   );
 
   const userSessionSignOut = (
     <div className="navContainer__loginRegister">
-      <button onClick={() => handleClickNavigate("/logowanie")}>Zaloguj</button>
-      <button onClick={() => handleClickNavigate("/rejestracja")}>
-        Załóż konto
-      </button>
+      <button onClick={() => navigate("/logowanie")}>Zaloguj</button>
+      <button onClick={() => navigate("/rejestracja")}>Załóż konto</button>
     </div>
   );
 

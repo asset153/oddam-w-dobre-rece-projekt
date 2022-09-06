@@ -7,10 +7,6 @@ function HomeHeader() {
   const navigate = useNavigate();
   const session = supabase.auth.session();
 
-  const handleClickNavigate = (location) => {
-    return session ? null : navigate(location);
-  };
-
   return (
     <header className="headerContainer">
       <div className="header__img"></div>
@@ -22,12 +18,16 @@ function HomeHeader() {
           <h1>
             Zacznij pomagać! <br /> Oddaj niechciane rzeczy w zaufane ręce
           </h1>
-          <img src="assets/Decoration.svg" alt="fancy border" />
+          <img src="/assets/Decoration.svg" alt="fancy border" />
           <div className="header__content__titleAndBtns__buttons">
-            <button onClick={() => handleClickNavigate("/logowanie")}>
+            <button
+              onClick={() => navigate(session ? "/oddaj-rzeczy" : "/logowanie")}
+            >
               Oddaj <br /> rzeczy
             </button>
-            <button onClick={() => handleClickNavigate("/logowanie")}>
+            <button
+              onClick={() => navigate(session ? "/oddaj-rzeczy" : "/logowanie")}
+            >
               Zorganizuj <br /> Zbiórkę
             </button>
           </div>

@@ -18,7 +18,7 @@ header.headerContainer {
 
     background-size: cover;
     background-position: center right;
-    background-image: url("assets/Home-Hero-Image.jpg");
+    background-image: url("/assets/Home-Hero-Image.jpg");
     background-repeat: no-repeat;
 
     @include tablet() {

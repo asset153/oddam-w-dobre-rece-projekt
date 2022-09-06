@@ -14,14 +14,9 @@ footer.footerContainer {
 
   position: relative;
 
-  // background-image: url("assets/Background-Contact-Form.jpg");
-
-  // background-size: cover;
-  // background-repeat: no-repeat;
-
   &::before {
     content: "";
-    background-image: url("assets/Background-Contact-Form.jpg");
+    background-image: url("/assets/Background-Contact-Form.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-size: cover;

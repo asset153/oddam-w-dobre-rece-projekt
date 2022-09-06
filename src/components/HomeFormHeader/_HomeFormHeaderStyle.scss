@@ -1,0 +1,118 @@
+@use "sass:map";
+
+header.headerFormContainer {
+  display: flex;
+
+  width: 100%;
+  min-height: 100vh;
+
+  @include tablet() {
+  }
+
+  > div.headerForm__img {
+    display: block;
+    height: 100vh;
+    width: 885px;
+
+    width: 45%;
+
+    background-size: cover;
+    background-position: center;
+    background-image: url("/assets/Form-Hero-Image.jpg");
+    background-repeat: no-repeat;
+
+    @include tablet() {
+      display: none;
+    }
+  }
+
+  > div.headerForm__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    height: 100vh;
+    width: 55%;
+
+    padding: 0 25px;
+
+    @include tablet() {
+      width: auto;
+    }
+
+    > div.headerForm__content__titleAndSteps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      row-gap: 35px;
+
+      margin: auto;
+
+      width: 665px;
+      //   height: 455px;
+      height: 100%;
+
+      color: map.get($colors, "dark-gray");
+
+      @include tablet() {
+        width: auto;
+        row-gap: 25px;
+      }
+
+      > h1 {
+        text-align: center;
+        font-size: 38px;
+        letter-spacing: -0.76px;
+        line-height: 1.75;
+
+        @include tablet() {
+          font-size: calc(38px / 1.5);
+          line-height: 1.25;
+        }
+      }
+
+      > h2 {
+        font-size: 40px;
+        font-weight: 300;
+      }
+
+      > div.headerForm__content__titleAndSteps__steps {
+        display: flex;
+        margin-top: 50px;
+        div.headerForm__content__titleAndSteps__steps--step {
+          width: 190px;
+          height: 190px;
+          transform: rotate(45deg);
+          border: 1px solid map.get($colors, "dark-gray");
+
+          position: relative;
+
+          > p {
+            position: absolute;
+            top: 50%;
+            left: 25%;
+
+            transform: rotate(-45deg);
+
+            text-align: center;
+
+            &:first-of-type {
+              font-size: 32px;
+
+              top: 25%;
+              left: 25%;
+            }
+
+            &:last-of-type {
+              font-size: 22px;
+              font-weight: 300;
+            }
+          }
+        }
+      }
+    }
+  }
+}

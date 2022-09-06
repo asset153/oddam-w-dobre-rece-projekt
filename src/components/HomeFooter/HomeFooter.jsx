@@ -132,7 +132,7 @@ function HomeFooter() {
       <article className="footerContainer__article">
         <h6>Skontaktuj się z nami</h6>
 
-        <img src="assets/Decoration.svg" alt="fancy border" />
+        <img src="/assets/Decoration.svg" alt="fancy border" />
 
         {showMessageStatus200 ? messageStatus200 : null}
 
@@ -220,8 +220,8 @@ function HomeFooter() {
           Copyright by Coders Lab
         </span>
         <div className="footerContainer__aside__icons">
-          <img src="assets/Facebook.svg" alt="facebook icon" />
-          <img src="assets/Instagram.svg" alt="instagram icon" />
+          <img src="/assets/Facebook.svg" alt="facebook icon" />
+          <img src="/assets/Instagram.svg" alt="instagram icon" />
         </div>
       </aside>
     </footer>
