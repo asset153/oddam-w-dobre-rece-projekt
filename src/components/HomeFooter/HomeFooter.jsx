@@ -1,22 +1,38 @@
-import React, { useId, useRef, useEffect, useState } from "react";
+import React, { useId, useRef, useEffect, useState, useContext } from "react";
 import axios from "axios";
 import validateUserName from "../../utilities/regexUserName";
 import validateEmail from "../../utilities/regexUserEmail";
 
 function HomeFooter() {
   const id = useId;
-  const [error, setError] = useState({
+
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    textarea: "",
+  });
+
+  const [formValueErrors, setFormValueErrors] = useState({
     name: false,
     email: false,
     textarea: false,
   });
 
-  // TODO =>
-  // const [formValues, setFormValues] = useState({
-  //   name: "",
-  //   email: "",
-  //   textarea: "",
-  // });
+  const handleChange = (e) => {
+    setFormValueErrors((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: false,
+      };
+    });
+
+    setFormValues((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
 
   const [showMessageStatus200, setShowMessageStatus200] = useState(false);
   const userNameRef = useRef("");
@@ -25,18 +41,18 @@ function HomeFooter() {
 
   const validateFn = () => {
     if (
-      userNameRef.current.value.length === 0 ||
-      userNameRef.current.value.length > 15 ||
-      validateUserName(userNameRef.current.value)
+      formValues.name.length === 0 ||
+      formValues.name.length > 15 ||
+      validateUserName(formValues.name)
     ) {
-      setError((prevState) => {
+      setFormValueErrors((prevState) => {
         return {
           ...prevState,
           name: true,
         };
       });
     } else {
-      setError((prevState) => {
+      setFormValueErrors((prevState) => {
         return {
           ...prevState,
           name: false,
@@ -44,18 +60,15 @@ function HomeFooter() {
       });
     }
 
-    if (
-      userEmailRef.current.value.length === 0 ||
-      !validateEmail(userEmailRef.current.value)
-    ) {
-      setError((prevState) => {
+    if (formValues.email.length === 0 || !validateEmail(formValues.email)) {
+      setFormValueErrors((prevState) => {
         return {
           ...prevState,
           email: true,
         };
       });
     } else {
-      setError((prevState) => {
+      setFormValueErrors((prevState) => {
         return {
           ...prevState,
           email: false,
@@ -63,18 +76,15 @@ function HomeFooter() {
       });
     }
 
-    if (
-      userTextArea.current.value.length === 0 ||
-      userTextArea.current.value.length < 120
-    ) {
-      setError((prevState) => {
+    if (formValues.textarea.length === 0 || formValues.textarea.length < 120) {
+      setFormValueErrors((prevState) => {
         return {
           ...prevState,
           textarea: true,
         };
       });
     } else {
-      setError((prevState) => {
+      setFormValueErrors((prevState) => {
         return {
           ...prevState,
           textarea: false,
@@ -143,18 +153,20 @@ function HomeFooter() {
               <input
                 type="text"
                 id={`${id}name`}
-                ref={userNameRef}
+                name="name"
+                value={formValues.name}
+                onChange={handleChange}
                 placeholder="Krzysztof"
                 style={{
-                  borderBottom: error.name
+                  borderBottom: formValueErrors.name
                     ? "1px solid red"
                     : "1px solid #3c3c3c",
                 }}
               />
               <div
                 style={{
-                  display: error.name ? "block" : "none",
-                  color: error.name ? "red" : "",
+                  display: formValueErrors.name ? "block" : "none",
+                  color: formValueErrors.name ? "red" : "",
                 }}
               >
                 Podane imię jest nieprawidłowe!
@@ -167,17 +179,19 @@ function HomeFooter() {
                 type="email"
                 id={`${id}email`}
                 placeholder="abc@xyz.pl"
-                ref={userEmailRef}
+                name="email"
+                value={formValues.email}
+                onChange={handleChange}
                 style={{
-                  borderBottom: error.email
+                  borderBottom: formValueErrors.email
                     ? "1px solid red"
                     : "1px solid #3c3c3c",
                 }}
               />
               <div
                 style={{
-                  display: error.email ? "block" : "none",
-                  color: error.email ? "red" : "",
+                  display: formValueErrors.email ? "block" : "none",
+                  color: formValueErrors.email ? "red" : "",
                 }}
               >
                 Podany email jest nieprawidłowy!
@@ -188,19 +202,21 @@ function HomeFooter() {
           <div className="footerContainer__article__form__container--textArea">
             <label htmlFor={`${id}textarea`}>Wpisz swoją wiadomość</label>
             <textarea
-              ref={userTextArea}
+              name="textarea"
+              value={formValues.textarea}
+              onChange={handleChange}
               id={`${id}textarea`}
               placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
               style={{
-                borderBottom: error.textarea
+                borderBottom: formValueErrors.textarea
                   ? "1px solid red"
                   : "1px solid #3c3c3c",
               }}
             ></textarea>
             <div
               style={{
-                display: error.textarea ? "block" : "none",
-                color: error.textarea ? "red" : "",
+                display: formValueErrors.textarea ? "block" : "none",
+                color: formValueErrors.textarea ? "red" : "",
               }}
             >
               Wiadomość musi mieć przynajmniej 120 znaków!

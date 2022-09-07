@@ -1,10 +1,14 @@
-import React, { useContext, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { Outlet } from "react-router-dom";
 import HomeFooter from "../HomeFooter/HomeFooter";
 import HomeFormHeader from "../HomeFormHeader/HomeFormHeader";
-import FormContext from "../../utilities/context";
+import { UserContext } from "../../App";
 
 function Form() {
+  const values = useContext(UserContext);
+
+  console.log(values);
+
   return (
     <section className="homeFormContainer">
       <Outlet />

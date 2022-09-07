@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import HomeAboutUs from "../HomeAboutUs/HomeAboutUs";
 import HomeFooter from "../HomeFooter/HomeFooter";
 import HomeHeader from "../HomeHeader/HomeHeader";
