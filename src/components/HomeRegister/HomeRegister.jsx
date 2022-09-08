@@ -126,6 +126,7 @@ function HomeLogin() {
         console.log("error", error);
         document.getElementById("register-form").reset();
         navigate("/");
+        window.location.reload();
       } else {
         return null;
       }

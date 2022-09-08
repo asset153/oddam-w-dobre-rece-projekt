@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../App";
 
 function HomeFormStepTwo() {
   const navigate = useNavigate();
+  const { dispatch } = useContext(UserContext);
+  const [value, setValue] = useState("");
+  const handleChange = (e) => setValue(e.target.value);
 
   const handleClickReturn = (e) => {
     e.preventDefault();
@@ -11,22 +15,31 @@ function HomeFormStepTwo() {
 
   const handleClickNext = (e) => {
     e.preventDefault();
+    dispatch({
+      type: "SET_STEP_TWO_DATA",
+      payload: value,
+    });
+
     navigate("/oddaj-rzeczy/krok-trzeci");
   };
 
   return (
     <form>
       <span>Krok 2/4</span>
-      <label htmlFor="step201">Choose a pet:</label>
+      <fieldset>
+        <legend>Zaznacz co chcesz dodać:</legend>
 
-      <select id="step201">
-        <option value="">— wybierz —</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+        <label htmlFor="step2">Liczba 60l worków:</label>
+
+        <select id="step2" onChange={handleChange}>
+          <option value="">— wybierz —</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </fieldset>
 
       <div>
         <button onClick={handleClickReturn}>Wstecz</button>

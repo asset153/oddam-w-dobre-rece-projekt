@@ -4,14 +4,18 @@ import { useNavigate } from "react-router-dom";
 
 function HomeFormStepOne() {
   const navigate = useNavigate();
-  const { stepOneData, changeStepOneData } = useContext(UserContext);
+  const { dispatch } = useContext(UserContext);
   const [value, setValue] = useState("");
 
   const handleChange = (e) => setValue(e.target.value);
 
   const handleClickNext = (e) => {
     e.preventDefault();
-    changeStepOneData(value);
+
+    dispatch({
+      type: "SET_STEP_ONE_DATA",
+      payload: value,
+    });
     navigate("/oddaj-rzeczy/krok-drugi");
   };
 

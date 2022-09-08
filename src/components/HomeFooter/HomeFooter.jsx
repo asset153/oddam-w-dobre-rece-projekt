@@ -1,5 +1,4 @@
 import React, { useId, useRef, useEffect, useState, useContext } from "react";
-import axios from "axios";
 import validateUserName from "../../utilities/regexUserName";
 import validateEmail from "../../utilities/regexUserEmail";
 
@@ -104,15 +103,20 @@ function HomeFooter() {
 
           method: "POST",
           body: JSON.stringify({
-            name: userNameRef.current.value,
-            email: userEmailRef.current.value,
-            message: userTextArea.current.value,
+            name: formValues.name,
+            email: formValues.email,
+            message: formValues.textarea,
           }),
         }
       );
 
       if (response.status === 200) {
-        document.getElementById("form").reset();
+        document.getElementById("footerForm").reset();
+        setFormValues({
+          name: "",
+          email: "",
+          textarea: "",
+        });
         setShowMessageStatus200(true);
       } else {
         setShowMessageStatus200(false);
@@ -146,7 +150,7 @@ function HomeFooter() {
 
         {showMessageStatus200 ? messageStatus200 : null}
 
-        <form id="form" className="footerContainer__article__form">
+        <form id="footerForm" className="footerContainer__article__form">
           <div className="footerContainer__article__form__container--nameEmail">
             <div>
               <label htmlFor={`${id}name`}>Wpisz swoje imię</label>

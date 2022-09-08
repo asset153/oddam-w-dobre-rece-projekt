@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useReducer } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import HomeForm from "./components/HomeForm/HomeForm";
@@ -13,16 +13,17 @@ import HomeFormSummary from "./components/HomeFormSummary/HomeFormSummary";
 import HomeFormThankYou from "./components/HomeFormThankYou/HomeFormThankYou";
 import HomeNotFound from "./components/HomeNotFound/HomeNotFound";
 
+import { reducer, initialState } from "./utilities/reducer";
+
 import { supabase } from "./supabaseClient";
 export const UserContext = createContext();
 
 function App() {
   const session = supabase.auth.session();
 
-  const [stepOneData, setStepOneData] = useState("");
-  const changeStepOneData = (stepOneData) => setStepOneData(stepOneData);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  console.log(stepOneData);
+  // console.log(state);
 
   const NestedPath = (
     <Route path="/oddaj-rzeczy" element={<HomeForm />}>
@@ -36,7 +37,7 @@ function App() {
   );
 
   return (
-    <UserContext.Provider value={{ stepOneData, changeStepOneData }}>
+    <UserContext.Provider value={{ dispatch, state }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

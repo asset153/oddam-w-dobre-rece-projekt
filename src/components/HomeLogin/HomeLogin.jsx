@@ -36,6 +36,7 @@ function HomeLogin() {
     if (!error && userSignIn.password.length !== 0) {
       SetCorrectLogin(true);
       navigate("/");
+      window.location.reload();
     } else {
       SetCorrectLogin(false);
     }
