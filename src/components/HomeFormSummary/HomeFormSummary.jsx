@@ -30,12 +30,12 @@ function HomeFormSummary() {
         <div>
           <p>{stepTwoData} worki</p>
           <p>{stepOneData}</p>
-          <p>{stepThreeData.whoDoYouWantHelps}</p>
+          <p>{stepThreeData?.whoDoYouWantHelps}</p>
           <img src="/assets/Icon-1.svg" alt="t-shirt icon" />
         </div>
 
         <div>
-          <p>Dla lokalizacji: {stepThreeData.location}</p>
+          <p>Dla lokalizacji: {stepThreeData?.location}</p>
           <img src="/assets/Icon-4.svg" alt="ecology cyrcle icon" />
         </div>
       </div>
@@ -44,27 +44,27 @@ function HomeFormSummary() {
         <div>
           <p>Adres odbioru:</p>
           <div>
-            <p>Ulica</p>
+            <p>Ulica {stepFourData?.street}</p>
           </div>
 
           <div>
-            <p>Miasto</p>
+            <p>Miasto {stepFourData?.city}</p>
           </div>
 
           <div>
-            <p>Kod pocztowy</p>
+            <p>Kod pocztowy {stepFourData?.postCode}</p>
           </div>
 
           <div>
-            <p>Numer telefonu</p>
+            <p>Numer telefonu {stepFourData?.phoneNumber}</p>
           </div>
         </div>
         <div>
           <p>Termin odbioru:</p>
           <div>
-            <p>Data</p>
-            <p>Godzina</p>
-            <p>Uwagi dla kuriera</p>
+            <p>Data {stepFourData?.date}</p>
+            <p>Godzina {stepFourData?.time}</p>
+            <p>Uwagi dla kuriera {stepFourData?.messFromDeliveryMan}</p>
           </div>
         </div>
       </div>
