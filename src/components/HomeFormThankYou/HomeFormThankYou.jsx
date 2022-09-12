@@ -2,7 +2,7 @@ import React from "react";
 
 function HomeFormThankYou() {
   return (
-    <div>
+    <div className="formThankYouWrapper">
       <p>
         Dziękujemy za przesłanie formularza Na maila prześlemy wszelkie
         informacje o odbiorze.

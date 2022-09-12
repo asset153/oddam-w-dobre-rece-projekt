@@ -6,17 +6,26 @@ function HomeFormStepOne() {
   const navigate = useNavigate();
   const { dispatch } = useContext(UserContext);
   const [value, setValue] = useState("");
+  const [error, setError] = useState(false);
 
-  const handleChange = (e) => setValue(e.target.value);
+  const handleChange = (e) => {
+    setError(false);
+    setValue(e.target.value);
+  };
 
   const handleClickNext = (e) => {
     e.preventDefault();
 
-    dispatch({
-      type: "SET_STEP_ONE_DATA",
-      payload: value,
-    });
-    navigate("/oddaj-rzeczy/krok-drugi");
+    if (value) {
+      dispatch({
+        type: "SET_STEP_ONE_DATA",
+        payload: value,
+      });
+      navigate("/oddaj-rzeczy/krok-drugi");
+    } else {
+      setError(true);
+      return null;
+    }
   };
 
   return (
@@ -95,6 +104,15 @@ function HomeFormStepOne() {
           <label className="formStepOneWrapper__label" htmlFor="step105">
             Inne
           </label>
+        </div>
+
+        <div
+          style={{
+            display: error ? "block" : "none",
+            color: error ? "red" : "none",
+          }}
+        >
+          Wymagane pola muszą być uzupełnione!
         </div>
       </fieldset>
 

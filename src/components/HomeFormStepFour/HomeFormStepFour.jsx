@@ -49,10 +49,10 @@ function HomeFormStepFour() {
   } = value;
 
   return (
-    <form>
-      <span>Krok 4/4</span>
+    <form className="formStepFourWrapper">
+      <span className="formStepFourWrapper__step">Krok 4/4</span>
 
-      <fieldset>
+      <fieldset className="formStepFourWrapper__fieldsetWrapper">
         <legend>Podaj adres oraz termin odbioru rzecz przez kuriera</legend>
 
         <fieldset>
@@ -147,8 +147,18 @@ function HomeFormStepFour() {
       </fieldset>
 
       <div>
-        <button onClick={handleClickReturn}>Wstecz</button>
-        <button onClick={handleClickNext}>Dalej</button>
+        <button
+          className="formStepFourWrapper__btn formStepFourWrapper__btn--before"
+          onClick={handleClickReturn}
+        >
+          Wstecz
+        </button>
+        <button
+          className="formStepFourWrapper__btn formStepFourWrapper__btn--after"
+          onClick={handleClickNext}
+        >
+          Dalej
+        </button>
       </div>
     </form>
   );

@@ -1,0 +1,64 @@
+@use "sass:map";
+
+.formStepFourWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 140px;
+  &__step {
+    font-size: 24px;
+    color: map.get($colors, "dark-gray");
+  }
+
+  &__fieldsetWrapper {
+    display: flex;
+
+    > legend {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    > fieldset {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+
+      > legend {
+        font-size: 24px;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 10px;
+
+        > label {
+          font-size: 24px;
+        }
+
+        > input {
+          width: 255px;
+          height: 40px;
+          background-color: transparent;
+          cursor: pointer;
+          outline: none;
+          font-size: 24px;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+
+  &__btn {
+    padding: 20px 50px;
+    background-color: transparent;
+    border: 1px solid map.get($colors, "dark-gray");
+    cursor: pointer;
+
+    &--before {
+      margin-right: 30px;
+    }
+  }
+}

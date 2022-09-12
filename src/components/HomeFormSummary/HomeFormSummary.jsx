@@ -15,32 +15,32 @@ function HomeFormSummary() {
     e.preventDefault();
 
     console.log(state);
-    // navigate("/oddaj-rzeczy/podziekowania");
+    navigate("/oddaj-rzeczy/podziekowania");
   };
 
   const { stepOneData, stepTwoData, stepThreeData, stepFourData } = state;
 
   return (
-    <div>
-      <p>Podsumowanie Twojej darowizny</p>
+    <div className="formSummaryWrapper">
+      <p className="formSummaryWrapper__step">Podsumowanie Twojej darowizny</p>
 
-      <div>
+      <div className="formSummaryWrapper__gave">
         <p>Oddajesz:</p>
 
         <div>
+          <img src="/assets/Icon-1.svg" alt="t-shirt icon" />
           <p>{stepTwoData} worki</p>
           <p>{stepOneData}</p>
           <p>{stepThreeData?.whoDoYouWantHelps}</p>
-          <img src="/assets/Icon-1.svg" alt="t-shirt icon" />
         </div>
 
         <div>
-          <p>Dla lokalizacji: {stepThreeData?.location}</p>
           <img src="/assets/Icon-4.svg" alt="ecology cyrcle icon" />
+          <p>Dla lokalizacji: {stepThreeData?.location}</p>
         </div>
       </div>
 
-      <div>
+      <div className="formSummaryWrapper__data">
         <div>
           <p>Adres odbioru:</p>
           <div>
@@ -70,8 +70,18 @@ function HomeFormSummary() {
       </div>
 
       <div>
-        <button onClick={handleClickReturn}>Wstecz</button>
-        <button onClick={handleClickNext}>Potwierdzam</button>
+        <button
+          className="formSummaryWrapper__btn formSummaryWrapper__btn--after"
+          onClick={handleClickReturn}
+        >
+          Wstecz
+        </button>
+        <button
+          className="formSummaryWrapper__btn formSummaryWrapper__btn--before"
+          onClick={handleClickNext}
+        >
+          Potwierdzam
+        </button>
       </div>
     </div>
   );
