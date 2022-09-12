@@ -68,7 +68,7 @@ function HomeWhoWeHelps() {
   return (
     <section className="sectionWhoWeHelpContainer" name="whoWeHelps">
       <h4>Komu pomagamy?</h4>
-      <img src="assets/Decoration.svg" alt="fancy border" />
+      <img src="/assets/Decoration.svg" alt="fancy border" />
       <div className="sectionWhoWeHelpContainer__kindsOfInstitution">
         <button
           onClick={() => chooseOrganization("Fundations")}

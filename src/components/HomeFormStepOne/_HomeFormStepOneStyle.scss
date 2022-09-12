@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   &__step {
     font-size: 24px;
     color: map.get($colors, "dark-gray");

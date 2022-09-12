@@ -1,5 +1,10 @@
 ## Screenshots :camera:
 
+![App Screenshot](/assets/oddam-w-dobre-rece-screen01.png)
+![App Screenshot](/assets/oddam-w-dobre-rece-screen02.png)
+![App Screenshot](/assets/oddam-w-dobre-rece-screen03.png)
+![App Screenshot](/assets/oddam-w-dobre-rece-screen04.png)
+
 # Oddam w dobre ręce :open_hands:
 
 ## Tech Stack :computer:
@@ -15,7 +20,7 @@
 - fully validate,
 - pagination,
 - register / login,
-- send form (soon),
+- send form,
 - responsive (soon),
 
 ## Getting Started :mag:
