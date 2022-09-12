@@ -1,0 +1,54 @@
+@use "sass:map";
+
+.formStepOneWrapper {
+  padding: 40px 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &__step {
+    font-size: 24px;
+    color: map.get($colors, "dark-gray");
+  }
+
+  &__fieldset {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  &__legend {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  &__inputWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid map.get($colors, "dark-gray");
+    cursor: pointer;
+
+    &:checked {
+      background-color: map.get($colors, "gold");
+    }
+  }
+
+  &__label {
+    font-size: 24px;
+    font-weight: 300;
+    margin-left: 20px;
+  }
+
+  &__btn {
+    padding: 20px 50px;
+    background-color: transparent;
+    border: 1px solid map.get($colors, "dark-gray");
+    cursor: pointer;
+  }
+}

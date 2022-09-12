@@ -34,10 +34,10 @@ function HomeFormStepThree() {
   };
 
   return (
-    <form>
-      <span>Krok 3/4</span>
+    <form className="formStepThreeWrapper">
+      <span className="formStepThreeWrapper__step">Krok 3/4</span>
 
-      <div>
+      <div className="formStepThreeWrapper__localizationWrapper">
         <label htmlFor="step3--localization">Lokalizacja:</label>
         <select
           name="location"
@@ -53,65 +53,68 @@ function HomeFormStepThree() {
         </select>
       </div>
 
-      <div>
+      <div className="formStepThreeWrapper__whoDoYouWantHelpsWrapper">
         <span>Komu chcesz pomóc?</span>
-        <div>
-          <input
-            type="radio"
-            id="childrens"
-            name="whoDoYouWantHelps"
-            value="dzieciom"
-            onChange={handleChange}
-          />
-          <label htmlFor="childrens">dzieciom</label>
-        </div>
 
         <div>
-          <input
-            type="radio"
-            id="lonelyMothers"
-            name="whoDoYouWantHelps"
-            value="samotnym matkom"
-            onChange={handleChange}
-          />
-          <label htmlFor="lonelyMothers">samotnym matkom</label>
-        </div>
+          <div>
+            <input
+              type="radio"
+              id="childrens"
+              name="whoDoYouWantHelps"
+              value="dzieciom"
+              onChange={handleChange}
+            />
+            <label htmlFor="childrens"> dzieciom</label>
+          </div>
 
-        <div>
-          <input
-            type="radio"
-            id="homeless"
-            name="whoDoYouWantHelps"
-            value="bezdomnym"
-            onChange={handleChange}
-          />
-          <label htmlFor="homeless">bezdomnym</label>
-        </div>
+          <div>
+            <input
+              type="radio"
+              id="lonelyMothers"
+              name="whoDoYouWantHelps"
+              value="samotnym matkom"
+              onChange={handleChange}
+            />
+            <label htmlFor="lonelyMothers">samotnym matkom</label>
+          </div>
 
-        <div>
-          <input
-            type="radio"
-            id="disabled"
-            name="whoDoYouWantHelps"
-            value="niepełnosprawnym"
-            onChange={handleChange}
-          />
-          <label htmlFor="disabled">niepełnosprawnym</label>
-        </div>
+          <div>
+            <input
+              type="radio"
+              id="homeless"
+              name="whoDoYouWantHelps"
+              value="bezdomnym"
+              onChange={handleChange}
+            />
+            <label htmlFor="homeless">bezdomnym</label>
+          </div>
 
-        <div>
-          <input
-            type="radio"
-            id="olderPeople"
-            name="whoDoYouWantHelps"
-            value="osobom starszym"
-            onChange={handleChange}
-          />
-          <label htmlFor="olderPeople">osobom starszym</label>
+          <div>
+            <input
+              type="radio"
+              id="disabled"
+              name="whoDoYouWantHelps"
+              value="niepełnosprawnym"
+              onChange={handleChange}
+            />
+            <label htmlFor="disabled">niepełnosprawnym</label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              id="olderPeople"
+              name="whoDoYouWantHelps"
+              value="osobom starszym"
+              onChange={handleChange}
+            />
+            <label htmlFor="olderPeople">osobom starszym</label>
+          </div>
         </div>
       </div>
 
-      <div>
+      <div className="formStepThreeWrapper__optionalOrganizationWrapper">
         <label htmlFor="optionalOrganization">
           Wpisz nazwę konkretnej organizacji (opcjonalnie)
         </label>
@@ -124,9 +127,19 @@ function HomeFormStepThree() {
         />
       </div>
 
-      <div>
-        <button onClick={handleClickReturn}>Wstecz</button>
-        <button onClick={handleClickNext}>Dalej</button>
+      <div className="formStepThreeWrapper__btnWrapper">
+        <button
+          className="formStepThreeWrapper__btn formStepThreeWrapper__btn--before"
+          onClick={handleClickReturn}
+        >
+          Wstecz
+        </button>
+        <button
+          className="formStepThreeWrapper__btn formStepThreeWrapper__btn--after"
+          onClick={handleClickNext}
+        >
+          Dalej
+        </button>
       </div>
     </form>
   );

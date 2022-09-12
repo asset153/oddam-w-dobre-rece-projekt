@@ -24,14 +24,22 @@ function HomeFormStepTwo() {
   };
 
   return (
-    <form>
-      <span>Krok 2/4</span>
-      <fieldset>
-        <legend>Zaznacz co chcesz dodać:</legend>
+    <form className="formStepTwoWrapper">
+      <span className="formStepTwoWrapper__step">Krok 2/4</span>
+      <fieldset className="formStepTwoWrapper__fieldset">
+        <legend className="formStepTwoWrapper__legend">
+          Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:
+        </legend>
 
-        <label htmlFor="step2">Liczba 60l worków:</label>
+        <label className="formStepTwoWrapper__label" htmlFor="step2">
+          Liczba 60l worków:
+        </label>
 
-        <select id="step2" onChange={handleChange}>
+        <select
+          className="formStepTwoWrapper__select"
+          id="step2"
+          onChange={handleChange}
+        >
           <option value="">— wybierz —</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -41,9 +49,19 @@ function HomeFormStepTwo() {
         </select>
       </fieldset>
 
-      <div>
-        <button onClick={handleClickReturn}>Wstecz</button>
-        <button onClick={handleClickNext}>Dalej</button>
+      <div className="formStepTwoWrapper__btnWrapper">
+        <button
+          className="formStepTwoWrapper__btn formStepTwoWrapper__btn--before"
+          onClick={handleClickReturn}
+        >
+          Wstecz
+        </button>
+        <button
+          className="formStepTwoWrapper__btn formStepTwoWrapper__btn--after"
+          onClick={handleClickNext}
+        >
+          Dalej
+        </button>
       </div>
     </form>
   );

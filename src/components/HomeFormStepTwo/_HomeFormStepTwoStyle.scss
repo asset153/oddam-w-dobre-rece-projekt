@@ -1,0 +1,58 @@
+@use "sass:map";
+
+.formStepTwoWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 140px;
+
+  &__step {
+    font-size: 24px;
+    color: map.get($colors, "dark-gray");
+  }
+
+  &__fieldset {
+    display: flex;
+    align-items: center;
+  }
+
+  &__legend {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  &__label {
+    font-size: 24px;
+    font-weight: 300;
+    margin-right: 20px;
+  }
+
+  &__select {
+    appearance: none;
+    outline: none;
+    background-color: transparent;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 24px;
+
+    > option {
+      appearance: none;
+      background-color: #eeedeb;
+      font-size: 24px;
+    }
+  }
+
+  &__btn {
+    padding: 20px 50px;
+    background-color: transparent;
+    border: 1px solid map.get($colors, "dark-gray");
+    cursor: pointer;
+
+    &--before {
+      margin-right: 30px;
+    }
+  }
+}
